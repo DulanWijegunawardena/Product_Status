@@ -1,0 +1,22 @@
+img{
+  height: 150px;
+  margin-left: 50px;
+  padding: 2px;
+}
+
+button{
+ margin-left: 25px;
+ width: 200px;
+ font-size: 1em;
+ border: solid black 2px;
+ padding: 2px;
+}
+
+input{
+  border: solid black 2px;
+  padding: 2px;
+}
+
+button{
+  background-color: white;
+}

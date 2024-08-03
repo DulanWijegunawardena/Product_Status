@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <a href="./login.html">Login</a>
+    <form>
+        <div>
+            <h3>Production Status</h3>
+            <table>
+                <tr>
+                    <td>            
+                        <label for="style-number">Style #</label>
+                    </td>
+                    <td>
+                        <input type="text" id="style-number" name="style-number">
+                    </td>
+                    <td>
+                        <button type="button" id="search" name="search">Search</button>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <h3>Style Details</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="collection-year">Collection Year</label>
+                    </td>
+                    <td>
+                        <input type="text" id="collection-year" name="collection-year">                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="collection-month">Collection Month</label>
+                    </td>
+                    <td>
+                        <input type="text" id="collection-month" name="collection-month">                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="collection-week">Collection Week</label>
+                    </td>
+                    <td>
+                        <input type="text" id="collection-week" name="collection-week">                        
+                    </td>
+                </tr>           
+                <tr>
+                    <td>
+                        <label for="collection-name">Collection Name</label>
+                    </td>
+                    <td>
+                        <input type="text" id="collection-name" name="collection-name">                        
+                    </td>
+                </tr>           
+                <tr>
+                    <td>
+                        <label for="product-type">Product Type</label>
+                    </td>
+                    <td>                        
+                        <input list="product-type-list" id="product-type" name="product-type" />
+                        <datalist id="product-type-list">
+                            <option value="Dress">
+                            <option value="Blouse">
+                            <option value="Top">
+                            <option value="Skirt">
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="product-description">Description</label>
+                    </td>
+                    <td>
+                        <input type="text" id="product-description" name="product-description">                        
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="trp-supplier">TRP Supplier</label>
+                    </td>
+                    <td>                        
+                        <input list="trp-supplier-list" id="trp-supplier" name="trp-supplier" />
+                        <datalist id="trp-supplier-list">
+                            <option value="Maya Dress Designer">
+                            <option value="Cool & Casual">
+                            <option value="Modern Star">
+                            <option value="Sha Fashion">
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-size">Sample Size</label>
+                    </td>
+                    <td>
+                        <input type="text" id="sample-size" name="sample-size">   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="size-ratio">Size Ratio</label>
+                    </td>
+                    <td>
+                        <input type="text" id="size-ratio" name="size-ratio">   
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="product-comments">Product Comments</label>
+                    </td>
+                    <td>
+                        <textarea id="product-comments" name="product-comments"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="add-product-img">Product Image</label>
+                    </td>
+                    <td>
+                        <input type="file" name="add-product-img" id="add-product-img">
+                    </td>
+                </tr>
+            </table>            
+            <div>
+                <img src="" alt="Add Image" id="product-img" />
+            </div>
+            <script>
+                let productImg = document.getElementById("product-img");
+                let addProductImg = document.getElementById("add-product-img");
+        
+                addProductImg.onchange = function(){
+                    productImg.src = URL.createObjectURL(addProductImg.files[0]);
+                }
+                
+            </script>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <h3>Fabric</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="fabric-type">Fabric Type</label>
+                    </td>
+                    <td>                        
+                        <input list="fabric-type-list" id="fabric-type" name="fabric-type" />
+                        <datalist id="fabric-type-list">
+                            <option value="Chambray">
+                            <option value="Georgette">
+                            <option value="Linen">
+                            <option value="ITY">
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="solid-printed">Solid/Printed</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="solid" name="solid-printed" value="Solid">
+                        <label for="solid">Solid</label>
+                        <input type="radio" id="printed" name="solid-printed" value="Printed">
+                        <label for="printed">Printed</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fabric-inhoused">Fabric In-housed?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="fabric-inhoused-yes" name="fabric-inhoused" value="Yes">
+                        <label for="sample-approved-yes">Yes</label>
+                        <input type="radio" id="fabric-inhoused-no" name="fabric-inhoused" value="No">
+                        <label for="fabric-inhoused-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fabric-inhoused-date">Fabric In-housed Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="fabric-inhoused-date" name="fabric-inhoused-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fabric-supplier">Fabric Supplier</label>
+                    </td>
+                    <td>   
+                        <input list="fabric-supplier-list" id="fabric-supplier" name="embelishment" />
+                        <datalist id="fabric-supplier-list">
+                            <option value="Shanko">
+                            <option value="JDM">
+                            <option value="Madusha">
+                            <option value="CIB">
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="add-fabric-img">Fabric Image</label>
+                    </td>
+                    <td>
+                        <input type="file" name="add-fabric-img" id="add-fabric-img">
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <img src="" alt="Add Fabric Image" id="fabric-img"/>
+            </div>
+            <script>
+                let fabricImg = document.getElementById("fabric-img");
+                let addFabricImg = document.getElementById("add-fabric-img");
+        
+                addFabricImg.onchange = function(){
+                    fabricImg.src = URL.createObjectURL(addFabricImg.files[0]);
+                }
+            </script>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <h3>Sampling</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="sample-fabric-received">Sample Fabric Received?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="sample-fabric-received-yes" name="sample-fabric-received" value="Yes">
+                        <label for="sample-fabric-received-yes">Yes</label>
+                        <input type="radio" id="sample-fabric-received-no" name="sample-fabric-received" value="No">
+                        <label for="sample-fabric-received-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-fabric-received-date">Sample Fabric Received Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="sample-fabric-received-date" name="sample-fabric-received-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-dispatched">Sample Dispatched?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="sample-dispatched-yes" name="sample-dispatched" value="Yes">
+                        <label for="sample-dispatched-yes">Yes</label>
+                        <input type="radio" id="sample-dispatched-no" name="sample-dispatched" value="No">
+                        <label for="sample-dispatched-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-dispatch-date">Sample Dispatch Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="sample-dispatch-date" name="sample-dispatch-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-request-date">Sample Request Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="sample-request-date" name="sample-request-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-confirmation-date">Sample Confirmation Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="sample-confirmation-date" name="sample-confirmation-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-received">Sample Received?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="sample-received-yes" name="sample-received" value="Yes">
+                        <label for="sample-received-yes">Yes</label>
+                        <input type="radio" id="sample-received-no" name="sample-received" value="No">
+                        <label for="sample-received-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-received-date">Sample Received Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="sample-received-date" name="sample-received-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-approved">Sample Approved?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="sample-approved-yes" name="sample-approved" value="Yes">
+                        <label for="sample-approved-yes">Yes</label>
+                        <input type="radio" id="sample-approved-no" name="sample-approved" value="No">
+                        <label for="sample-approved-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-approved-date">Sample Approved Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="sample-approved-date" name="sample-approved-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="sample-comments">Sample Comments</label>
+                    </td>
+                    <td>
+                        <textarea id="sample-comments" name="sample-comments"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="add-approved-sample-img">Approved Sample Image</label>
+                    </td>
+                    <td>
+                        <input type="file" name="add-approved-sample-img" id="add-approved-sample-img">
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <img src="" alt="Add Approved Sample Images" id="approved-sample-img" />
+            </div>
+            <script>
+                let approvedSampleImg = document.getElementById("approved-sample-img");
+                let addApprovedSampleImg = document.getElementById("add-approved-sample-img");
+        
+                addApprovedSampleImg.onchange = function(){
+                    approvedSampleImg.src = URL.createObjectURL(addApprovedSampleImg.files[0]);
+                }
+            </script>
+           <br>
+            <hr>
+        </div>
+        <div>
+            <h3>Embellishment</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="embellishment-type">Embelishment Type</label>
+                    </td>
+                    <td>   
+                        <input list="embellishment-type-list" id="embellishment-type" name="embellishment-type" />
+                        <datalist id="embellishment-type-list">
+                            <option value="Embroidery">
+                            <option value="Pleating">
+                            <option value="Printing">
+                            <option value="Heat & Bond">
+                        </datalist>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="embellishment-sample-dispatched">Embelishment Sample Dispatched?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="embellishment-sample-dispatched-yes" name="embellishment-sample-dispatched" value="Yes">
+                        <label for="embellishment-sample-dispatched-yes">Yes</label>
+                        <input type="radio" id="embellishment-sample-dispatched-no" name="embellishment-sample-dispatched" value="No">
+                        <label for="embellishment-sample-dispatched-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="embellishment-sample-dispatched-date">Embellishment Sample Dispatched Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="embellishment-sample-dispatched-date" name="embellishment-sample-dispatched-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="embellishment-sample-received">Embelishment Sample Received?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="embellishment-sample-received-yes" name="embellishment-sample-received" value="Yes">
+                        <label for="embellishment-sample-received-yes">Yes</label>
+                        <input type="radio" id="embellishment-sample-received-no" name="embellishment-sample-received" value="No">
+                        <label for="embellishment-sample-received-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="embellishment-sample-received-date">Embellishment Sample Received Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="embellishment-sample-received-date" name="embellishment-sample-received-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="embellishment-sample-approved">Embellishment Sample Approved?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="embellishment-sample-approved-yes" name="embellishment-sample-approved" value="Yes">
+                        <label for="embellishment-sample-approved-yes">Yes</label>
+                        <input type="radio" id="embellishment-sample-approved-no" name="embellishment-sample-approved" value="No">
+                        <label for="embellishment-sample-approved-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="embellishment-sample-approved-date">Embellishment Sample Approved Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="embellishment-sample-approved-date" name="embellishment-sample-approved-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="add-embellishment-img">Embellishment Image</label>
+                    </td>
+                    <td>
+                        <input type="file" name="add-embellishment-img" id="add-embellishment-img">
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <img src="" alt="Add Embellishment Image" id="embellishment-img" />
+            </div>
+            <script>
+                let embellishmentImg = document.getElementById("embellishment-img");
+                let addEmbellishmentImg = document.getElementById("add-embellishment-img");
+        
+                addEmbellishmentImg.onchange = function(){
+                    embellishmentImg.src = URL.createObjectURL(addEmbellishmentImg.files[0]);
+                }
+            </script>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <h3>Cost Sheet</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="cost-sheet-approved">Cost Sheet Approved?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="cost-sheet-approved-yes" name="cost-sheet-approved" value="Yes">
+                        <label for="cost-sheet-approved-yes">Yes</label>
+                        <input type="radio" id="cost-sheet-approved-no" name="cost-sheet-approved" value="No">
+                        <label for="cost-sheet-approved-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cost-sheet-approved-date">Cost Sheet Approved Date</label>
+                    </td>
+                    <td>
+                        <input type="date" id="cost-sheet-approved-date" name="cost-sheet-approved-date">
+                    </td>
+                </tr>
+                <tr>
+                    <tr>
+                        <td>
+                            <label for="development-cost">Development Cost</label>
+                        </td>
+                        <td>
+                            <input type="text" id="development-cost" name="development-cost">
+                        </td>
+                    </tr>
+                        <td>
+                        <label for="fabric-cost">Fabric Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="fabric-cost" name="fabric-cost">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="trim-cost">Trim Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="trim-cost" name="trim-cost">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="labels-tag-cost">Labels & Tag Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="labels-tag-cost" name="labels-tag-cost">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="embellishment-cost">Embellishment Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="embellishment-cost" name="embellishment-cost">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="cutting-cost">Cutting Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="cutting-cost" name="cutting-cost">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="stitching-cost">Stitching Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="stitching-cost" name="stitching-cost">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="packing-cost">Packing Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="packing-cost" name="packing-cost">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="supplier-profit">Supplier Profit</label>
+                    </td>
+                    <td>
+                        <input type="text" id="supplier-profit" name="supplier-profit">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Other-cost">Other Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="other-cost" name="other-cost">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="toal-cost">Total Cost</label>
+                    </td>
+                    <td>
+                        <input type="text" id="total-cost" name="total-cost">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="add-cost-sheet-img">Cost Sheet Image</label>
+                    </td>
+                    <td>
+                        <input type="file" name="add-cost-sheet-img" id="add-cost-sheet-img">
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <img src="" alt="Add Cost Sheet" id="cost-sheet-img" />
+            </div>
+            <script>
+                let costSheetImg = document.getElementById("cost-sheet-img");
+                let addCostSheetImg = document.getElementById("add-cost-sheet-img");
+        
+                addCostSheetImg.onchange = function(){
+                    costSheetImg.src = URL.createObjectURL(addCostSheetImg.files[0]);
+                }
+            </script>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <h3>SMV</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="pre-costing-smv">Pre-Costing SMV</label>
+                    </td>
+                    <td>
+                        <input type="text" id="pre-costing-smv" name="pre-costing-smv">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="post-costing-smv">Post-Costing SMV</label>
+                    </td>
+                    <td>
+                        <input type="text" id="post-costing-smv" name="post-costing-smv">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="actual-smv">Actual SMV</label>
+                    </td>
+                    <td>
+                        <input type="text" id="actual-smv" name="actual-smv">
+                    </td>    
+                </tr>
+            </table>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <h3>YY</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="pre-costing-yy">Pre-Costing YY</label>
+                    </td>
+                    <td>
+                        <input type="text" id="pre-costing-yy" name="pre-costing-yy">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="post-costing-yy">Post-Costing YY</label>
+                    </td>
+                    <td>
+                        <input type="text" id="post-costing-yy" name="post-costing-yy">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="actual-yy">Actual YY</label>
+                    </td>
+                    <td>
+                        <input type="text" id="actual-yy" name="actual-yy">
+                    </td>    
+                </tr>
+            </table>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <h3>Production</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="po-raised">PO Raised?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="po-raised-yes" name="po-raised" value="Yes">
+                        <label for="po-raised-yes">Yes</label>
+                        <input type="radio" id="po-raised-no" name="po-raised" value="No">
+                        <label for="po-raised-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="po-raised-date">PO Raised Date</label>
+                   </td>
+                    <td>
+                        <input type="date" id="po-raised-date" name="po-raised-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="po-raised-qty">PO Raised Qty</label>
+                    </td>
+                    <td>
+                        <input type="text" id="po-raised-qty" name="po-raised-qty">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fabric-dispatched">Fabric Dispatched?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="fabric-dispatched-yes" name="fabric-dispatched" value="Yes">
+                        <label for="fabric-dispatched-yes">Yes</label>
+                        <input type="radio" id="fabric-dispatched-no" name="fabric-dispatched" value="No">
+                        <label for="fabric-dispatched-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="fabric-dispatched-date">Fabric Dispatched Date</label>
+                   </td>
+                    <td>
+                        <input type="date" id="fabric-dispatched-date" name="fabric-dispatched-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="bulk-request-date">Bulk Request Date</label>
+                   </td>
+                    <td>
+                        <input type="date" id="bulk-request-date" name="bulk-request-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="bulk-confirmed-date">Bulk Confirmed Date</label>
+                   </td>
+                    <td>
+                        <input type="date" id="bulk-confirmed-date" name="bulk-confirmed-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="bulk-received">Bulk Received?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="bulk-received-yes" name="bulk-received" value="Yes">
+                        <label for="bulk-received-yes">Yes</label>
+                        <input type="radio" id="bulk-received-no" name="bulk-received" value="No">
+                        <label for="bulk-received-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="bulk-received-date">Bulk Received Date</label>
+                   </td>
+                    <td>
+                        <input type="date" id="bulk-received-date" name="bulk-received-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="bulk-received-qty">Bulk Received Qty</label>
+                    </td>
+                    <td>
+                        <input type="text" id="bulk-received-qty" name="bulk-received-qty">
+                    </td>    
+                </tr>
+                <tr>
+                    <td>
+                        <label for="add-final-product-img">Final Product Image</label>
+                    </td>
+                    <td>
+                        <input type="file" name="add-final-product-img" id="add-final-product-img">
+                    </td>
+                </tr>
+            </table>
+            <div>
+                <img src="" alt="Add Final Product Image" id="final-product-img" />
+            </div>
+            <script>
+                let finalProductImg = document.getElementById("final-product-img");
+                let addFinalProductImg = document.getElementById("add-final-product-img");
+        
+                addFinalProductImg.onchange = function(){
+                    finalProductImg.src = URL.createObjectURL(addFinalProductImg.files[0]);
+                }
+            </script>
+            <br>
+            <hr>
+        </div>
+        <div>
+            <h3>Quality Checking</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="qc-passed">QC Passed?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="qc-passed-yes" name="qc-passed" value="Yes">
+                        <label for="qc-passed-yes">Yes</label>
+                        <input type="radio" id="qc-passed-no" name="qc-passed" value="No">
+                        <label for="qc-passed-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="qc-passed-date">QC Passed Date</label>
+                   </td>
+                    <td>
+                        <input type="date" id="qc-passed-date" name="qc-passed-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="qc-passed-qty">QC Passed Qty</label>
+                    </td>
+                    <td>
+                        <input type="text" id="qc-passed-qty" name="qc-passed-qty">
+                    </td>    
+                </tr>
+            </table>
+            <br>
+            <hr>
+        </div>                    
+        <div>
+            <h3>Distribution</h3>
+            <table>
+                <tr>
+                    <td>
+                        <label for="dispatched-to-outlets">Dispatched to Outlets?</label>
+                    </td>
+                    <td>   
+                        <input type="radio" id="dispatched-to-outlets-yes" name="dispatched-to-outlets" value="Yes">
+                        <label for="dispatched-to-outlets-yes">Yes</label>
+                        <input type="radio" id="dispatched-to-outlets-no" name="dispatched-to-outlets" value="No">
+                        <label for="dispatched-to-outlets-no">No</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="dispatched-to-outlets-date">Dispatched to Outlets Date</label>
+                   </td>
+                    <td>
+                        <input type="date" id="dispatched-to-outlets-date" name="dispatched-to-outlets-date">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="dispatched-to-outlets-qty">Dispatched to Outlets Qty</label>
+                    </td>
+                    <td>
+                        <input type="text" id="dispatched-to-outlets-qty" name="dispatched-to-outlets-qty">
+                    </td>    
+                </tr>
+            </table>
+            <br>
+            <hr>
+        </div>                    
+    </form>
+</body>
+</html>
